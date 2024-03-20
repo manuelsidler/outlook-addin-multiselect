@@ -99,6 +99,10 @@ function getAttachments() {
   }
 }
 
+function getItemClass() {
+  setOutput(Office.context.mailbox.item.itemClass);
+}
+
 function appendOutput(output) {
   document.getElementById("output").innerText += JSON.stringify(output);
 }
@@ -117,6 +121,7 @@ Office.onReady(() => {
   document.getElementById("saveSessionDataButton").onclick = saveSessionData;
   document.getElementById("getSessionDataButton").onclick = getSessionData;
   document.getElementById("getAttachmentsButton").onclick = getAttachments;
+  document.getElementById("itemClassButton").onclick = getItemClass;
 
   Office.context.mailbox.addHandlerAsync(Office.EventType.SelectedItemsChanged, function (args) {
     window.location.reload();
