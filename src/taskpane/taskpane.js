@@ -138,6 +138,6 @@ Office.onReady(() => {
     window.location.reload();
   });
 
-  document.getElementById("subject").innerText = Office.context.mailbox.item.subject;
-  document.getElementById("itemId").innerText = Office.context.mailbox.item.itemId;
+  document.getElementById("subject").innerText = Office.context.mailbox.item?.subject;
+  document.getElementById("itemId").innerText = Office.context.mailbox.item?.itemId;
 });
