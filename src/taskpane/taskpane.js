@@ -99,10 +99,6 @@ function getAttachments() {
   }
 }
 
-function getItemClass() {
-  setOutput(Office.context.mailbox.item.itemClass);
-}
-
 function getInternetHeaders() {
   Office.context.mailbox.item.getAllInternetHeadersAsync(function (result) {
     if (result.status !== Office.AsyncResultStatus.Succeeded) {
@@ -131,13 +127,16 @@ Office.onReady(() => {
   document.getElementById("saveSessionDataButton").onclick = saveSessionData;
   document.getElementById("getSessionDataButton").onclick = getSessionData;
   document.getElementById("getAttachmentsButton").onclick = getAttachments;
-  document.getElementById("itemClassButton").onclick = getItemClass;
   document.getElementById("getInternetHeadersButton").onclick = getInternetHeaders;
 
+  Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, function (args) {
+    window.location.reload();
+  });
   Office.context.mailbox.addHandlerAsync(Office.EventType.SelectedItemsChanged, function (args) {
     window.location.reload();
   });
 
   document.getElementById("subject").innerText = Office.context.mailbox.item?.subject;
   document.getElementById("itemId").innerText = Office.context.mailbox.item?.itemId;
+  document.getElementById("itemClass").innerText = Office.context.mailbox.item?.itemClass;
 });

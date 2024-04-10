@@ -4,8 +4,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Private</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Outlook Multiselect"/>
-  <Description DefaultValue="Sample for multi select items."/>
+  <DisplayName DefaultValue="Outlook Playground"/>
+  <Description DefaultValue="Add-in to playaround with Officejs."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.duckduckgo.com/"/>
