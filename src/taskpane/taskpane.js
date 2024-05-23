@@ -109,6 +109,17 @@ function getInternetHeaders() {
   });
 }
 
+function getEml() {
+  Office.context.mailbox.item.getAsFileAsync(function (result) {
+    if (result.status !== Office.AsyncResultStatus.Succeeded) {
+      setOutput(result.error);
+    } else {
+      const eml = atob(result.value);
+      setOutput(eml);
+    }
+  });
+}
+
 function appendOutput(output) {
   document.getElementById("output").innerText += JSON.stringify(output);
 }
@@ -128,6 +139,7 @@ Office.onReady(() => {
   document.getElementById("getSessionDataButton").onclick = getSessionData;
   document.getElementById("getAttachmentsButton").onclick = getAttachments;
   document.getElementById("getInternetHeadersButton").onclick = getInternetHeaders;
+  document.getElementById("getEmlButton").onclick = getEml;
 
   Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, function (args) {
     window.location.reload();
